@@ -1,2 +1,8 @@
-/home/deb/urplans/src/main/java/org/maifoss/urplans/Main.java
-/home/deb/urplans/src/main/java/org/maifoss/urplans/Task.java
+/home/deb/Documents/dev/urplans/src/main/java/org/maifoss/urplans/UrplansApplication.java
+/home/deb/Documents/dev/urplans/src/main/java/org/maifoss/urplans/Task.java
+/home/deb/Documents/dev/urplans/src/main/java/org/maifoss/urplans/repo/TaskRepositoryCustom.java
+/home/deb/Documents/dev/urplans/src/main/java/org/maifoss/urplans/TaskRepository.java
+/home/deb/Documents/dev/urplans/src/main/java/org/maifoss/urplans/config/QuerydslConfig.java
+/home/deb/Documents/dev/urplans/src/main/java/org/maifoss/urplans/controller/TaskController.java
+/home/deb/Documents/dev/urplans/src/main/java/org/maifoss/urplans/cli/CliRunner.java
+/home/deb/Documents/dev/urplans/src/main/java/org/maifoss/urplans/service/TaskService.java

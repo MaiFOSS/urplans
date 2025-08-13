@@ -20,9 +20,17 @@ public class TaskService {
         this.repo = repo;
     }
 
-    public Task save(Task t) { return repo.save(t); }
-    public List<Task> findAll() { return repo.findAll(); }
-    public Optional<Task> findById(Long id) { return repo.findById(id); }
+    public Task save(Task t) {
+        return repo.save(t);
+    }
+
+    public List<Task> findAll() {
+        return repo.findAll();
+    }
+
+    public Optional<Task> findById(Long id) {
+        return repo.findById(id);
+    }
 
     public boolean deleteById(Long id) {
         if (!repo.existsById(id)) return false;
@@ -44,8 +52,7 @@ public class TaskService {
 
     /**
      * Lightweight search used by CLI/controller.
-     * Signature kept permissive: controller calls search(title, dateStr, priority, page, size).
-     * This implementation is simple (in-memory filtering) so you don't have to wire QueryDSL yet.
+     * Keeps signature permissive: search(title, dateStr, priority, page, size).
      */
     public List<Task> search(String title, String dateStr, Task.Priority priority, int page, int size) {
         LocalDate date = null;
@@ -56,12 +63,16 @@ public class TaskService {
         } catch (Exception ignored) {}
 
         final LocalDate finalDate = date;
+        int safeSize = Math.max(1, size);
+        long skip = (long) Math.max(0, page) * safeSize;
+
         return repo.findAll().stream()
-                .filter(t -> title == null || title.isBlank() || t.getTitle().toLowerCase().contains(title.toLowerCase()))
-                .filter(t -> finalDate == null || (t.getStartDate() != null && t.getStartDate().equals(finalDate)))
+                .filter(t -> title == null || title.isBlank() ||
+                        (t.getTitle() != null && t.getTitle().toLowerCase().contains(title.toLowerCase())))
+                .filter(t -> finalDate == null || (t.getDate() != null && t.getDate().equals(finalDate)))
                 .filter(t -> priority == null || t.getPriority() == priority)
-                .skip((long) Math.max(0, page) * Math.max(1, size))
-                .limit(Math.max(1, size))
+                .skip(skip)
+                .limit(safeSize)
                 .collect(Collectors.toList());
     }
 }

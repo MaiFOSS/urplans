@@ -1,3 +1,10 @@
-org/maifoss/urplans/Main.class
+org/maifoss/urplans/config/QuerydslConfig.class
+org/maifoss/urplans/controller/TaskController.class
 org/maifoss/urplans/Task.class
+org/maifoss/urplans/repo/TaskRepositoryCustom.class
+org/maifoss/urplans/QTask.class
+org/maifoss/urplans/TaskRepository.class
+org/maifoss/urplans/cli/CliRunner.class
+org/maifoss/urplans/service/TaskService.class
 org/maifoss/urplans/Task$Priority.class
+org/maifoss/urplans/UrplansApplication.class
